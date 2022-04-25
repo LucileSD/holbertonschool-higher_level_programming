@@ -6,15 +6,15 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *tortue, *lievre;
-	tortue = lievre = list;
+	listint_t *turtle, *hare;
+	turtle = hare = list;
 
-	while(tortue && lievre && lievre->next)
+	while(turtle && hare && hare->next)
 	{
-		tortue = tortue->next;
-		lievre = lievre->next->next;
+		turtle = turtle->next;
+		hare = hare->next->next;
 
-		if (tortue == lievre)
+		if (turtle == hare)
 			return (1);
 	}
 	return (0);
