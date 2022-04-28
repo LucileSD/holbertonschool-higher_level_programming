@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-from alpha import l
-print(l)
+import alpha
+print(alpha.upper_case)
