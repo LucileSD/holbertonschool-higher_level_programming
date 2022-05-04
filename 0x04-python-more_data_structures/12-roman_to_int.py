@@ -9,7 +9,7 @@ def roman_to_int(roman_string):
         while i < len(roman_string):
             if i + 1 < len(roman_string):
                 suit = roman_string[i] + roman_string[i + 1]
-            if roman_string in two:
+            if suit in two:
                 result += two[suit]
                 i += 1
             elif roman_string[i] in one:
