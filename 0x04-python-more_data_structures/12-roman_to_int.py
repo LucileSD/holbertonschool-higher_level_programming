@@ -11,6 +11,7 @@ def roman_to_int(roman_string):
                 suit = roman_string[i] + roman_string[i + 1]
             if roman_string in two:
                 result += two[suit]
+                i += 1
             elif roman_string[i] in one:
                 result += one[roman_string[i]]
             i += 1
