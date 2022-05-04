@@ -15,4 +15,6 @@ def roman_to_int(roman_string):
             elif roman_string[i] in one:
                 result += one[roman_string[i]]
             i += 1
-    return result
+        return result
+    else:
+        return 0
