@@ -9,7 +9,6 @@ class MagicClass:
     Attribute:
         _MagicClass__radius: radius of a circle
     """
-    _MagicClass__radius = 0
 
     def __init__(self, radius):
         """
@@ -30,7 +29,7 @@ class MagicClass:
         area calculates area of a circle
         return the calculation
         """
-        return ((self._MagicClass__radius * 2) * math.pi)
+        return ((self._MagicClass__radius ** 2) * math.pi)
 
     def circumference(self):
         """
