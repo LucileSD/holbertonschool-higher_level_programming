@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Magicclass file"""
 import math
+import dis
 
 
 class MagicClass:
@@ -21,8 +22,9 @@ class MagicClass:
         self._MagicClass__radius = 0
         if radius is not type(int) and radius is not type(float):
             raise TypeError("radius must be a number")
-        self._MagicClass__radius = radius
-        return None
+        else:
+            self._MagicClass__radius = radius
+
 
     def area(self):
         """
@@ -37,3 +39,5 @@ class MagicClass:
         return the calculation
         """
         return (2 * math.pi * self._MagicClass__radius)
+
+dis.dis(MagicClass)
