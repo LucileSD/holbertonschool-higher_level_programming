@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Magicclass file"""
 import math
-import dis
 
 
 class MagicClass:
@@ -39,5 +38,3 @@ class MagicClass:
         return the calculation
         """
         return (2 * math.pi * self._MagicClass__radius)
-
-dis.dis(MagicClass)
