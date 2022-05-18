@@ -10,7 +10,7 @@ class MagicClass:
         _MagicClass__radius: radius of a circle
     """
 
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         """
         Init a radius of a circle
         args:
