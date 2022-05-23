@@ -31,3 +31,8 @@
 
     >>> add_integer(-2, -3)
     -5
+
+    >>> add_integer(None, None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
