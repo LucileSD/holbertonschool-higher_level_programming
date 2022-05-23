@@ -4,13 +4,8 @@
 
 class Rectangle:
     """
-        creates an empty class that defines a rectangle
-            Attributes:
-                __width : the width of the rectangle
-                __height: the height of the rectangle
+        creates a class that defines a rectangle
     """
-    __width = 0
-    __height = 0
 
     def __init__(self, width=0, height=0):
         """
@@ -43,8 +38,7 @@ class Rectangle:
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
-        else:
-            self.__width = value
+        self.__width = value
 
     @property
     def height(self):
@@ -66,5 +60,4 @@ class Rectangle:
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
-        else:
-            self.__height = value
+        self.__height = value
