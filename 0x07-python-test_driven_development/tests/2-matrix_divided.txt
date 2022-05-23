@@ -30,3 +30,16 @@
     Traceback (most recent call last):
     ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+    >>> matrix_divided([[2.2, 4.4, 5.2], [3.6, 6.3, 7.2]], 2)
+    [[1.1, 2.2, 2.6], [1.8, 3.15, 3.6]]
+
+    >>> matrix_divided([[None], [None]], 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided([[None], [1, 2 , 3]], 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
