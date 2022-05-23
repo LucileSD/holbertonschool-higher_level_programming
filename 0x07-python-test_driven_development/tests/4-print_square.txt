@@ -23,3 +23,14 @@
     Traceback (most recent call last):
     ...
     TypeError: size must be an integer
+
+    >>> print_square('HEllo')
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    >>> print_square(2, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() takes 1 positional argument but 2 were given
+
