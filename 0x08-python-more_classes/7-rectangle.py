@@ -5,12 +5,7 @@
 class Rectangle:
     """
         creates an empty class that defines a rectangle
-            Attributes:
-                __width : the width of the rectangle
-                __height: the height of the rectangle
     """
-    __width = 0
-    __height = 0
     number_of_instances = 0
     print_symbol = "#"
 
@@ -22,8 +17,8 @@ class Rectangle:
                 height: the height of the rectangle
             Return: None
         """
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
         Rectangle.number_of_instances += 1
 
     @property
@@ -42,9 +37,9 @@ class Rectangle:
                 value: the value for the width
             Return: None
         """
-        if not isinstance(self.__width, int):
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
-        if self.__width < 0:
+        if value < 0:
             raise ValueError("width must be >= 0")
         else:
             self.__width = value
@@ -65,9 +60,9 @@ class Rectangle:
                 value: the value for the height
             Return: None
         """
-        if not isinstance(self.__height, int):
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        if self.__height < 0:
+        if value < 0:
             raise ValueError("height must be >= 0")
         else:
             self.__height = value
