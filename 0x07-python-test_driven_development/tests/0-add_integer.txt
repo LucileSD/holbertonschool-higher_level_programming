@@ -43,7 +43,7 @@
     >>> add_integer(float('inf'), 2.11111111111111)
     Traceback (most recent call last):
         ...
-    OverflowError: cannot convert float infinity to integer
+    TypeError: a must be an integer
 
     >>> add_integer(None, -2.11111111111111)
     Traceback (most recent call last):
