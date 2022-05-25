@@ -17,6 +17,8 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([1, 2, 3, 5, 4]), 5)
         self.assertEqual(max_integer([-2, -6, -1, -12]), -1)
         self.assertEqual(max_integer([1, 266, 3, 3605]), 3605)
+        self.assertEqual(max_integer([1]), 1)
+        self.assertEqual(max_integer([5605, 2, 8]), 5605)
 
     def test_is_float(self):
         """
