@@ -36,3 +36,6 @@
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
+
+    >>> add_integer(3.11111, 2.11111)
+    5
