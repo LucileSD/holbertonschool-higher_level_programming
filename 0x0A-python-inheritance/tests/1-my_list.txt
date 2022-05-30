@@ -86,3 +86,19 @@
 >>> my_list.extend(['b', 'z', 'g', 'e'])
 >>> my_list.print_sorted()
 ['b', 'e', 'g', 'z']
+
+>>> my_list = MyList()
+>>> my_list.extend([6, 9, 2, 8])
+>>> my_list.index(2)
+2
+
+>>> my_list = MyList()
+>>> my_list.extend([6, 9, 2, 8])
+>>> my_list.count(2)
+1
+
+>>> my_list = MyList()
+>>> my_list.extend([6, 9, 2, 8])
+>>> my_list.remove(2)
+>>> print(my_list)
+[6, 9, 8]
