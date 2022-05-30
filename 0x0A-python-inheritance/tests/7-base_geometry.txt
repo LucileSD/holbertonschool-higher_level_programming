@@ -78,3 +78,10 @@ Exception: area() is not implemented
 >>> bg.integer_validator(None, 5)
 
 >>> bg.integer_validator(6, 5)
+
+>>> bg.integer_validator(a, 5)
+Traceback (most recent call last):
+...
+NameError: name 'a' is not defined
+
+>>> bg.integer_validator([1, 2, 3], 5)
