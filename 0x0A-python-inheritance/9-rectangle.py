@@ -2,7 +2,7 @@
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 """
-    Recatangle class file
+    Rectangle class file
 """
 
 
