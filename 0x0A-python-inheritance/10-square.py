@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+    import class Rectangle
+"""
 Rectangle = __import__('9-rectangle').Rectangle
 """
     Square class file
