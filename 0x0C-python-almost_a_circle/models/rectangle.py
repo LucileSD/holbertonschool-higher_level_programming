@@ -115,7 +115,8 @@ class Rectangle(Base):
         """
             displays the rectangle with #
         """
-        print('\n'.join('#' * self.width for i in range(self.height)))
+        print('\n' * self.y, end="")
+        print((' ' * self.x + "#" * self.width + '\n') * self.height, end="")
 
     def __str__(self):
         """
