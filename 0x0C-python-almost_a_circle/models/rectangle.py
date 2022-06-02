@@ -129,7 +129,8 @@ class Rectangle(Base):
         """
             assigns an argument to each attribute
         """
-        self.id = args[0]
+        if len(args) >= 1:
+            self.id = args[0]
         if len(args) >= 2:
             self.width = args[1]
         if len(args) >= 3:
