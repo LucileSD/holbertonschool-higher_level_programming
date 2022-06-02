@@ -110,3 +110,9 @@ class Rectangle(Base):
             return the result
         """
         return self.width * self.height
+
+    def display(self):
+        """
+            displays the rectangle with #
+        """
+        print('\n'.join('#' * self.width for i in range(self.height)))
