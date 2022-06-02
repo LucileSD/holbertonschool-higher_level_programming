@@ -23,10 +23,10 @@ class Rectangle(Base):
                 y: the position
                 id
         """
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
 
     @property
@@ -38,11 +38,15 @@ class Rectangle(Base):
         return self.__width
 
     @width.setter
-    def width(self, value):
+    def width(self, value_w):
         """
             the setter function of the width
         """
-        self.__width = value
+        if type(value_w) is not int:
+            raise TypeError("width must be an integer")
+        if value_w <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value_w
 
     @property
     def height(self):
@@ -53,11 +57,15 @@ class Rectangle(Base):
         return self.__height
 
     @height.setter
-    def height(self, value):
+    def height(self, value_h):
         """
             the setter function of the height
         """
-        self.__height = value
+        if type(value_h) is not int:
+            raise TypeError("height must be an integer")
+        if value_h <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value_h
 
     @property
     def x(self):
@@ -68,11 +76,15 @@ class Rectangle(Base):
         return self.__x
 
     @x.setter
-    def x(self, value):
+    def x(self, value_x):
         """
             the setter function of x
         """
-        self.__x = value
+        if type(value_x) is not int:
+            raise TypeError("x must be an integer")
+        if value_x < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value_x
 
     @property
     def y(self):
@@ -82,8 +94,12 @@ class Rectangle(Base):
         return self.__y
 
     @y.setter
-    def y(self, value):
+    def y(self, value_y):
         """
             the setter function of y
         """
-        self.__y = value
+        if type(value_y) is not int:
+            raise TypeError("y must be an integer")
+        if value_y < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value_y
