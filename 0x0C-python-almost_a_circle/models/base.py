@@ -55,5 +55,5 @@ class Base:
 
         str = cls.to_json_string(list_dict)
 
-        with open("{cls.__name__}" + ".json", "w", encoding="utf-8") as buf:
+        with open(cls.__name__ + ".json", "w", encoding="utf-8") as buf:
             buf.write(str)
