@@ -4,6 +4,7 @@
 """
 import json
 import os
+import csv
 
 
 """
@@ -111,3 +112,54 @@ class Base:
             for inst in list_json:
                 list_obj.append(cls.create(**inst))
             return list_obj
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+            saves python object in CSV file
+        """
+        str = ""
+
+        if list_objs is None:
+            list_objs = []
+
+        with open(cls.__name__ + ".csv", "w", encoding="utf-8") as fd:
+            if cls.__name__ == "Rectangle":
+                str = ["id", "width", "height", "x", "y", "\0"]
+            else:
+                str = ["id", "size", "x", "y", "\0"]
+
+            ldict = csv.DictWriter(fd, fieldnames=str)
+            for attributes in list_objs:
+                ldict.writerow(attributes.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+            CSV file to python
+        """
+        list_pyt = []
+        if not os.path.exists(cls.__name__ + ".csv"):
+            return list_pyt
+        else:
+            with open(cls.__name__ + ".csv", "r", encoding="utf-8") as fd:
+                for line in csv.reader(fd):
+                    print(line)
+                    if cls.__name__ == "Rectangle":
+                        header = {
+                                "id": int(line[0]),
+                                "width": int(line[1]),
+                                "height": int(line[2]),
+                                "x": int(line[3]),
+                                "y": int(line[4])
+                        }
+                    else:
+                        header = {
+                                "id": int(line[0]),
+                                "size": int(line[1]),
+                                "x": int(line[2]),
+                                "y": int(line[3])
+                        }
+                    attributes = cls.create(**header)
+                    list_pyt.append(attributes)
+        return list_pyt
