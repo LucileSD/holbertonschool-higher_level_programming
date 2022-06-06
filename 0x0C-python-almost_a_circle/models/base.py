@@ -3,6 +3,7 @@
     import module json
 """
 import json
+import os
 
 
 """
@@ -91,3 +92,22 @@ class Base:
             dummy_obj = cls(2)
         dummy_obj.update(**dictionary)
         return dummy_obj
+
+    @classmethod
+    def load_from_file(cls):
+        """
+            a list of instances by json file
+            return:
+                a list of instances
+        """
+        list_obj = []
+        list_json = []
+        if not os.path.exists(cls.__name__ + ".json"):
+            return list_obj
+        else:
+            with open(cls.__name__ + ".json", "r", encoding="utf-8") as fo:
+                list_json = cls.from_json_string(fo.read())
+
+            for inst in list_json:
+                list_obj.append(cls.create(**inst))
+            return list_obj
