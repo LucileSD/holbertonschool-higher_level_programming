@@ -57,3 +57,20 @@ class Base:
 
         with open(cls.__name__ + ".json", "w", encoding="utf-8") as buf:
             buf.write(str)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+            the list of the JSON string
+            args:
+                json_string:  a string representing a list of dictionaries
+            return:
+                the list
+        """
+        list_repr = []
+
+        if json_string is None:
+            list_repr = []
+        for inst in json.loads(json_string):
+            list_repr.append(inst)
+        return list_repr
