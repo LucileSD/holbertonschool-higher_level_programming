@@ -74,3 +74,20 @@ class Base:
         for inst in json.loads(json_string):
             list_repr.append(inst)
         return list_repr
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+            an instance with all attributes already set
+            args:
+                dictionary: can be thought of as a double pointer
+                to a dictionary
+            return:
+                an instance with all attributes already set
+        """
+        if cls.__name__ == "Rectangle":
+            dummy_obj = cls(2, 3)
+        else:
+            dummy_obj = cls(2)
+        dummy_obj.update(**dictionary)
+        return dummy_obj
