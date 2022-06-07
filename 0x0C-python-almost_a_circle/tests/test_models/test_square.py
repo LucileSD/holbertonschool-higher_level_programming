@@ -460,7 +460,10 @@ class Test_Square_load(unittest.TestCase):
 
 class Test_str_square(unittest.TestCase):
     """tests for the str of square"""
-    Base._Base__nb_objects = 0
+    def setUp(self):
+        """reset to 0"""
+        Base._Base__nb_objects = 0
+
 
     def test_str(self):
         """test normal use of str function"""
@@ -470,11 +473,11 @@ class Test_str_square(unittest.TestCase):
     def test_str1(self):
         """test less informations"""
         s2 = Square(2, 1)
-        self.assertEqual("[Square] (26) 1/0 - 2", str(s2))
+        self.assertEqual("[Square] (1) 1/0 - 2", str(s2))
         s3 = Square(3, 1, 6)
-        self.assertEqual("[Square] (27) 1/6 - 3", str(s3))
+        self.assertEqual("[Square] (2) 1/6 - 3", str(s3))
         s4 = Square(3)
-        self.assertEqual("[Square] (28) 0/0 - 3", str(s4))
+        self.assertEqual("[Square] (3) 0/0 - 3", str(s4))
         with self.assertRaises(TypeError):
             Square()
 
