@@ -72,13 +72,10 @@ class Base:
             return:
                 the list
         """
-        list_repr = []
 
         if json_string is None or json_string == "":
-            list_repr = []
-        for inst in json.loads(json_string):
-            list_repr.append(inst)
-        return list_repr
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
