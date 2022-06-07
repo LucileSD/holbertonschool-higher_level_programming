@@ -74,7 +74,7 @@ class Base:
         """
         list_repr = []
 
-        if json_string is None:
+        if json_string is None or json_string == "":
             list_repr = []
         for inst in json.loads(json_string):
             list_repr.append(inst)
