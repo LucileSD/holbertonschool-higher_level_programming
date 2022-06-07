@@ -11,6 +11,7 @@ from models.square import Square
 Base = base.Base
 
 
+
 class TestBase_comments(unittest.TestCase):
     """
         test for comments for base rectangle and square files
@@ -28,6 +29,12 @@ class TestBase(unittest.TestCase):
     """
         test for Base
     """
+    def setUp(self):
+        """
+            reset id
+        """
+        Base._Base__nb_objects = 0
+
     def test_creation_id(self):
         """
             test if value of id has the good assignment
@@ -164,7 +171,7 @@ class TestToJsonString(unittest.TestCase):
 
     def test_none(self):
         """Test with None"""
-        self.assertEqual("null", Base.to_json_string(None))
+        self.assertEqual([], Base.to_json_string(None))
 
     def test_no_parameters(self):
         """Test if no parameter (list_dicitonaries)"""
