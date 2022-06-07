@@ -167,6 +167,11 @@ class TestSquareSize(unittest.TestCase):
         with self.assertRaises(TypeError):
             my_square.size = {4}
 
+    def test_square_size11(self):
+        """square 0"""
+        with self.assertRaises(ValueError):
+            Square(0)
+
 
 class TestSquareUpdate_args(unittest.TestCase):
     """Unittest for update(*args) method of Square instance"""
