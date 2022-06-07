@@ -170,7 +170,7 @@ class TestToJsonString(unittest.TestCase):
 
     def test_none(self):
         """Test with None"""
-        self.assertEqual([], Base.to_json_string(None))
+        self.assertEqual("[]", Base.to_json_string(None))
 
     def test_no_parameters(self):
         """Test if no parameter (list_dicitonaries)"""
