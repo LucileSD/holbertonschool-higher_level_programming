@@ -470,11 +470,11 @@ class Test_str_square(unittest.TestCase):
     def test_str1(self):
         """test less informations"""
         s2 = Square(2, 1)
-        self.assertEqual("[Square] (24) 1/0 - 2", str(s2))
+        self.assertEqual("[Square] (26) 1/0 - 2", str(s2))
         s3 = Square(3, 1, 6)
-        self.assertEqual("[Square] (25) 1/6 - 3", str(s3))
+        self.assertEqual("[Square] (27) 1/6 - 3", str(s3))
         s4 = Square(3)
-        self.assertEqual("[Square] (26) 0/0 - 3", str(s4))
+        self.assertEqual("[Square] (28) 0/0 - 3", str(s4))
         with self.assertRaises(TypeError):
             Square()
 
@@ -492,6 +492,19 @@ class Test_str_square(unittest.TestCase):
             Square([1, 34])
         with self.assertRaises(TypeError):
             Square(float('inf'))
+
+
+class Test_Base_Create(unittest.TestCase):
+    """class test of the create base function"""
+
+    def test_square_create(self):
+        """test square creation"""
+        r1 = Square(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Square.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
+        self.assertIsNot(r1, r2)
+        self.assertNotEqual(r1, r2)
 
 
 if __name__ == '__main__':
