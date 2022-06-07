@@ -11,7 +11,6 @@ from models.square import Square
 Base = base.Base
 
 
-
 class TestBase_comments(unittest.TestCase):
     """
         test for comments for base rectangle and square files
