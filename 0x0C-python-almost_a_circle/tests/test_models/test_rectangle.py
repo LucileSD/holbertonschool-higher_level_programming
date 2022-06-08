@@ -615,6 +615,33 @@ class Test_Base_Create(unittest.TestCase):
         self.assertIsNot(r1, r2)
         self.assertNotEqual(r1, r2)
 
+class Test_display_rectangle(unittest.TestCase):
+    """
+        tests for display function
+    """
+    def setUp(self):
+        """
+            function to reset
+        """
+        Base._Base__nb_objects = 0
+
+    def test_display_square(self):
+        """
+            tests display
+        """
+        r1 = Rectangle(1, 2)
+        self.assertEqual(None, r1.display())
+        with self.assertRaises(TypeError):
+            Rectangle(1).display()
+        r2 = Rectangle(2, 1, 2)
+        self.assertEqual(None, r2.display())
+        r3 = Rectangle(2, 1, 2, 2)
+        self.assertEqual(None, r3.display())
+        with self.assertRaises(TypeError):
+            Rectangle().display()
+        r3 = Rectangle(2, 1, 2, 2, 6)
+        self.assertEqual(None, r3.display())
+
 
 if __name__ == '__main__':
     unittest.main()
