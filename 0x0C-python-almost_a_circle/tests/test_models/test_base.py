@@ -246,6 +246,10 @@ class TestBase_save_to_file(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square.save_to_file(None, 1)
 
+    def test_save_two_arg_4(self):
+        """test for two arguments"""
+        self.assertEqual(Square.save_to_file([]), None)
+
 
 if __name__ == '__main__':
     unittest.main()
