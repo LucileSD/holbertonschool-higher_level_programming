@@ -7,6 +7,8 @@ import unittest
 import pycodestyle
 from models import rectangle
 from models.base import Base
+import io
+from contextlib import redirect_stdout
 Rectangle = rectangle.Rectangle
 
 
@@ -625,22 +627,21 @@ class Test_display_rectangle(unittest.TestCase):
         """
         Base._Base__nb_objects = 0
 
-    def test_display_square(self):
+    def test_display_rectangle(self):
         """
             tests display
         """
-        r1 = Rectangle(1, 2)
-        self.assertEqual(None, r1.display())
-        with self.assertRaises(TypeError):
-            Rectangle(1).display()
-        r2 = Rectangle(2, 1, 2)
-        self.assertEqual(None, r2.display())
-        r3 = Rectangle(2, 1, 2, 2)
-        self.assertEqual(None, r3.display())
-        with self.assertRaises(TypeError):
-            Rectangle().display()
-        r3 = Rectangle(2, 1, 2, 2, 6)
-        self.assertEqual(None, r3.display())
+        r1 = Rectangle(8, 7)
+        r2 = Rectangle(8, 7, 3, 2, 4)
+        with io.StringIO() as buf, redirect_stdout(buf):
+            r1.display()
+            output = buf.getvalue()
+            self.assertEqual(output, ("#" * 8 + "\n") * 7)
+        with io.StringIO() as buf, redirect_stdout(buf):
+            r2.display()
+            output = buf.getvalue()
+            self.assertEqual(
+                output, (2 * "\n" + (" " * 3 + "#" * 8 + "\n") * 7))
 
 
 if __name__ == '__main__':
