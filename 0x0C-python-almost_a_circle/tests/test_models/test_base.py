@@ -1,39 +1,21 @@
 #!/usr/bin/python3
+
 """
-    Unittest for Base
+    Unittests for Base module
 """
 
 import unittest
+import os
 import pycodestyle
-from models import base
+from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-Base = base.Base
-
-
-class TestBase_comments(unittest.TestCase):
-    """
-        test for comments for base rectangle and square files
-    """
-    def test_conformance_1(self):
-        """
-            Test that we conform to PEP-8 for Base
-        """
-        style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['models/base.py'])
-        self.assertEqual(result.total_errors, 0)
 
 
 class TestBase(unittest.TestCase):
     """
         test for Base
     """
-    def setUp(self):
-        """
-            reset id
-        """
-        Base._Base__nb_objects = 0
-
     def test_creation_id(self):
         """
             test if value of id has the good assignment
@@ -55,6 +37,84 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b6.id, 6.3)
         self.assertEqual(b7.id, 4)
         self.assertEqual(b8.id, 5)
+
+    def test_to_json_string(self):
+        json_string = Base.to_json_string(None)
+        self.assertEqual(json_string, '[]')
+
+    def test_from_json_string(self):
+        json_string = Base.from_json_string(None)
+        self.assertEqual(json_string, [])
+
+
+"""
+    Unittest for Base Rectangle and Square pep8 documentation
+"""
+
+
+class TestBase(unittest.TestCase):
+    """
+        test for comments for base rectangle and square files
+    """
+    def test_conformance_base(self):
+        """
+            Test that we conform to PEP-8 for Base
+        """
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/base.py'])
+        self.assertEqual(result.total_errors, 0)
+
+    def test_conformance_rectangle(self):
+        """
+            Test that we conform to PEP-8 for Rectangle
+        """
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/rectangle.py'])
+        self.assertEqual(result.total_errors, 0)
+
+    def test_conformance_square(self):
+        """
+            Test that we conform to PEP-8 for Square
+        """
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/square.py'])
+        self.assertEqual(result.total_errors, 0)
+
+
+"""
+    Unittest for the create function of the Base class
+"""
+
+
+class Test_Base_Create(unittest.TestCase):
+    """class test of the create base function"""
+
+    def test_rectangle_create(self):
+        """test rectangle creation"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
+        self.assertIsNot(r1, r2)
+        self.assertNotEqual(r1, r2)
+
+    def test_square_create(self):
+        """test square creation"""
+        r1 = Square(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Square.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
+        self.assertIsNot(r1, r2)
+        self.assertNotEqual(r1, r2)
+
+
+"""
+    Unittest for the init function of the Base class
+"""
+
+
+class Test_Base_Init(unittest.TestCase):
+    """class test of the init base function"""
 
     def test_id_int(self):
         """Test integer id"""
@@ -100,10 +160,11 @@ class TestBase(unittest.TestCase):
             b = Base(1, None)
 
 
+"""Unittests for to_json_string(list_dictionaries)"""
+
+
 class TestToJsonString(unittest.TestCase):
-    """
-    Unittest for to_json_string
-    """
+    """Unittest for to_json_string"""
     def test_rectangle_to_str(self):
         """True if to_json_string return str type"""
         r1 = Rectangle(10, 7, 4, 6, 1)
@@ -183,6 +244,66 @@ class TestToJsonString(unittest.TestCase):
             Base.to_json_string([], 3600)
 
 
+"""
+Unit test for the load_from_file method of the Base class
+"""
+
+
+class TestBaseSize(unittest.TestCase):
+    """ tests for load_from_file of base.py """
+
+    def test_load_empty_file(self):
+        """Tests for non existant and empty file"""
+        if (os.path.exists("Rectangle.json") is True):
+            os.remove("Rectangle.json")
+        if (os.path.exists("Square.json") is True):
+            os.remove("Square.json")
+        if (os.path.exists("Base.json") is True):
+            os.remove("Base.json")
+        lst = Rectangle.load_from_file()
+        self.assertEqual(lst, [])
+        os.mknod("Rectangle.json")
+        lst = Rectangle.load_from_file()
+        self.assertEqual(lst, [])
+
+    def test_load_rectangle(self):
+        """Test for loading a list of rectangles"""
+        rect_a = Rectangle(2, 4)
+        rect_b = Rectangle(1, 1)
+        rect_c = Rectangle(6, 6)
+        my_list = [rect_a, rect_b, rect_c]
+        Rectangle.save_to_file([rect_a, rect_b, rect_c])
+        my_list_loaded = Rectangle.load_from_file()
+        self.assertEqual(type(my_list), type(my_list_loaded))
+        self.assertEqual(len(my_list), len(my_list_loaded))
+        for i in range(len(my_list)):
+            self.assertEqual(type(my_list_loaded[i]), type(my_list[i]))
+            self.assertEqual(my_list[i].to_dictionary(),
+                             my_list_loaded[i].to_dictionary())
+        os.remove("Rectangle.json")
+
+    def test_load_square(self):
+        """Test for loading a list of squares"""
+        rect_a = Square(2)
+        rect_b = Square(1)
+        rect_c = Square(6)
+        my_list = [rect_a, rect_b, rect_c]
+        Square.save_to_file([rect_a, rect_b, rect_c])
+        my_list_loaded = Square.load_from_file()
+        self.assertEqual(type(my_list), type(my_list_loaded))
+        self.assertEqual(len(my_list), len(my_list_loaded))
+        for i in range(len(my_list)):
+            self.assertEqual(type(my_list_loaded[i]), type(my_list[i]))
+            self.assertEqual(my_list[i].to_dictionary(),
+                             my_list_loaded[i].to_dictionary())
+        os.remove("Square.json")
+
+    def test_extra_args(self):
+        """Test calling the function with an additional argument"""
+        with self.assertRaises(TypeError):
+            Base.load_from_file("Hello")
+
+
 class TestBase_save_to_file(unittest.TestCase):
     """Unittests for testing save_to_file method of Base class."""
 
@@ -231,24 +352,15 @@ class TestBase_save_to_file(unittest.TestCase):
         with open("Square.json", "r") as file:
             self.assertEqual("[]", file.read())
 
-    def test_save_no_args_3(self):
+    def test_save_no_args(self):
         """test for no argument"""
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
 
-    def test_save_two_arg_2(self):
+    def test_save_two_arg(self):
         """test for two arguments"""
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
-
-    def test_save_two_arg_1(self):
-        """test for two arguments"""
-        with self.assertRaises(TypeError):
-            Square.save_to_file(None, 1)
-
-    def test_save_two_arg_4(self):
-        """test for two arguments"""
-        self.assertEqual(Square.save_to_file([]), None)
 
 
 if __name__ == '__main__':
