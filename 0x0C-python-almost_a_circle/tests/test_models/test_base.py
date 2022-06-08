@@ -231,17 +231,17 @@ class TestBase_save_to_file(unittest.TestCase):
         with open("Square.json", "r") as file:
             self.assertEqual("[]", file.read())
 
-    def test_save_no_args(self):
+    def test_save_no_args_3(self):
         """test for no argument"""
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
 
-    def test_save_two_arg(self):
+    def test_save_two_arg_2(self):
         """test for two arguments"""
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
 
-    def test_save_two_arg(self):
+    def test_save_two_arg_1(self):
         """test for two arguments"""
         with self.assertRaises(TypeError):
             Square.save_to_file(None, 1)
