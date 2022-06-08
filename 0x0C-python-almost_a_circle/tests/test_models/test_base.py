@@ -181,6 +181,8 @@ class TestToJsonString(unittest.TestCase):
         """Test if more undefined parameters"""
         with self.assertRaises(TypeError):
             Base.to_json_string([], 3600)
+
+
 class TestBase_save_to_file(unittest.TestCase):
     """Unittests for testing save_to_file method of Base class."""
 
@@ -238,6 +240,11 @@ class TestBase_save_to_file(unittest.TestCase):
         """test for two arguments"""
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
+
+    def test_save_two_arg(self):
+        """test for two arguments"""
+        with self.assertRaises(TypeError):
+            Square.save_to_file(None, 1)
 
 
 if __name__ == '__main__':
