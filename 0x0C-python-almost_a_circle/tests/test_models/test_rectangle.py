@@ -434,7 +434,7 @@ class TestUpdate(unittest.TestCase):
         """ test with 4 attributes and without args"""
         a = Rectangle(10, 10, 10, 10)
         a.update()
-        self.assertEqual('[Rectangle] (6) 10/10 - 10/10', str(a))
+        self.assertEqual('[Rectangle] (9) 10/10 - 10/10', str(a))
 
     def test_update27(self):
         """ test with args width is negative"""
