@@ -24,6 +24,6 @@ VALUES
 ),
 (
 	4,
-	"Georges",
+	"George",
 	8
 );
