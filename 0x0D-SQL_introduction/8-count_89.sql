@@ -1,0 +1,2 @@
+-- display the number of records with id in the table
+SELECT count( * ) FROM first_table WHERE id=89;
