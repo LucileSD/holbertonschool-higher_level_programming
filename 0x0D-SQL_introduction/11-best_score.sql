@@ -1,4 +1,4 @@
 -- list all records with score >= 10
 SELECT score, name FROM second_table
 WHERE score >= 10
-ORDER BY second_table.score DESC
+ORDER BY second_table.score DESC;
