@@ -7,8 +7,7 @@ let i;
 if (process.argv.length <= 3) console.log('0');
 else {
   for (i = 2; i < process.argv.length; i++) {
-    if (Number(process.argv[i]))
-      array.push(process.argv[i]);
+    if (Number(process.argv[i])) array.push(process.argv[i]);
   }
   array.sort();
   const size = array.length;
