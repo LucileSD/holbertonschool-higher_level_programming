@@ -9,7 +9,6 @@ else {
   for (i = 2; i < process.argv.length; i++) {
     if (!isNaN(process.argv[i])) array.push(process.argv[i]);
   }
-  array.sort(function (a, b) { return a - b; });
-  const size = array.length;
-  console.log(array[size - 2]);
+  array.sort((a, b) => a - b);
+  console.log(array[array.length - 2]);
 }
