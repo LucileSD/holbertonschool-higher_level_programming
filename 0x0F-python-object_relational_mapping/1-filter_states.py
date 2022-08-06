@@ -17,6 +17,6 @@ if __name__ == "__main__":
                 ORDER BY states.id ASC")
     rows = cur.fetchall()
     for line in rows:
-        print(f"{line}")
+        print("{}".format(line))
     cur.close()
     db.close()
