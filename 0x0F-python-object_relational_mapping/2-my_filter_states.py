@@ -13,10 +13,10 @@ if __name__ == "__main__":
                          passwd=sys.argv[2],
                          db=sys.argv[3])
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name='{}'".format(sys.argv[4]))
+    cur.execute("SELECT * FROM states WHERE name='{:s}'".format(sys.argv[4]))
     rows = cur.fetchall()
     for line in rows:
-        if (line[0] == sys.argv[4]):
+        if (line[1] == sys.argv[4]):
             print("{}".format(line))
     cur.close()
     db.close()
