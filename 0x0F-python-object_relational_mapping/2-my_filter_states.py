@@ -16,6 +16,7 @@ if __name__ == "__main__":
     cur.execute("SELECT * FROM states WHERE name='{}'".format(sys.argv[4]))
     rows = cur.fetchall()
     for line in rows:
-        print("{}".format(line))
+        if (line[0] == sys.argv[4]):
+            print("{}".format(line))
     cur.close()
     db.close()
