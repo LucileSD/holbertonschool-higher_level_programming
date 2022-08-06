@@ -17,6 +17,7 @@ if __name__ == "__main__":
                 ORDER BY id ASC")
     rows = cur.fetchall()
     for line in rows:
-        print("{}".format(line))
+        if line[1][0] == 'N':
+            print("{}".format(line))
     cur.close()
     db.close()
