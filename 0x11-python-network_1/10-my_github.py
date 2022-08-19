@@ -13,7 +13,8 @@ import sys
 
 
 if __name__ == "__main__":
-    req = requests.get('https://api.github.com/user', auth=(sys.argv[1], sys.argv[2]))
+    req = requests.get('https://api.github.com/user', auth=(sys.argv[1],
+                       sys.argv[2]))
     res = req.json()
     try:
         print(res['id'])
