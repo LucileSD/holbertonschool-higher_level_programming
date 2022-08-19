@@ -12,8 +12,8 @@ import urllib.request
 
 if __name__ == "__main__":
     with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
-        body = response.read()
+        html = response.read()
     print("Body response:")
-    print(f"    - type: {type(body)}")
-    print(f"    - content: {body}")
-    print(f"    - utf8 content: {body.decode('utf-8')}")
+    print(f"    - type: {type(html)}")
+    print(f"    - content: {html}")
+    print(f"    - utf8 content: {html.decode('utf-8')}")
