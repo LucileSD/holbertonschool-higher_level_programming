@@ -2,7 +2,7 @@
 """
     import Python module for fetching URLs
 """
-import urllib.request
+import urllib
 
 
 """
