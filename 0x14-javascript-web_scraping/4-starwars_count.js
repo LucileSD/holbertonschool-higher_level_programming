@@ -4,9 +4,10 @@
 */
 const axios = require('axios');
 
-const url = process.argv[2];
-
-axios.get(url)
+axios({
+  method: 'GET',
+  url: process.argv[2]
+})
   .then(response => {
     let count = 0;
     for (const film of response.data.results) {
